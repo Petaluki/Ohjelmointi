@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxReseptikirja.ReseptikirjaController">
+   <top>
+      <HBox prefHeight="33.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar HBox.hgrow="ALWAYS">
+              <menus>
+                <Menu mnemonicParsing="false" text="Tiedosto">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLopeta" text="Sulje">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="ESCAPE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Muokkaa">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLisaaruokaaine" text="Lisää ruoka-aine">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Apua">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleApua" text="Tietoja">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label prefHeight="23.0" prefWidth="80.0" text="Valmistusohje" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <bottom>
+            <Pane prefHeight="41.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <TextArea prefHeight="305.0" prefWidth="198.0" promptText="Kirjoita tähän" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </right>
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <TextField promptText="Hae reseptiä" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </TextField>
+         </top>
+         <left>
+            <ListView fx:id="reseptiLista" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <BorderPane prefHeight="57.0" prefWidth="311.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Button onAction="#handleUusiResepti" prefHeight="25.0" prefWidth="100.0" text="_Uusi resepti" translateX="20.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </BorderPane.margin>
+                     <tooltip>
+                        <Tooltip text="Uuden reseptin lisääminen kirjastoon" />
+                     </tooltip>
+                  </Button>
+               </left>
+               <right>
+                  <Button onAction="#handleTallennaResepti" prefHeight="25.0" prefWidth="109.0" text="_Tallenna resepti" translateX="-40.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </BorderPane.margin>
+                     <tooltip>
+                        <Tooltip text="Tallenna resepti kirjastoosi" />
+                     </tooltip>
+                  </Button>
+               </right>
+               <top>
+                  <TextField editable="false" prefHeight="25.0" prefWidth="118.0" promptText="Hiilihydraattien määrä" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </bottom>
+         <top>
+            <BorderPane prefHeight="93.0" prefWidth="311.0" BorderPane.alignment="CENTER">
+               <center>
+                  <TextField prefHeight="25.0" prefWidth="66.0" promptText="määrä" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <ComboBox fx:id="pudotusId" prefHeight="25.0" prefWidth="147.0" promptText="Ruoka-aine" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <ComboBox fx:id="yksikkoId" prefHeight="25.0" prefWidth="85.0" promptText="Yksikkö" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </top>
+      </BorderPane>
+   </center>
+</BorderPane>
